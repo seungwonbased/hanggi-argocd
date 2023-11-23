@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-depolyment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - name: redis-container
+          image: 434692986520.dkr.ecr.us-west-2.amazonaws.com/hanggi-ecr:redis
+          ports:
+            - containerPort: 6379

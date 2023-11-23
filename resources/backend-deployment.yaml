@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rest-flask-backend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: rest-flask-backend-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rest-flask-backend-app
+    spec:
+      containers:
+      - name: flask
+        image: 434692986520.dkr.ecr.us-west-2.amazonaws.com/hanggi-ecr:ac8f36e1598db01903bc833047f72b35bae91119
+        env:
+          - name: REDIS_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: backend
+                key: REDIS_HOST
+        ports:
+        - containerPort: 5000
+          protocol: TCP
