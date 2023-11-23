@@ -7,6 +7,9 @@ images:
 - name: 434692986520.dkr.ecr.us-west-2.amazonaws.com/hanggi-ecr
   newName: 434692986520.dkr.ecr.us-west-2.amazonaws.com/hanggi-ecr
   newTag: v1.0.0
+- name: 434692986520.dkr.ecr.us-west-2.amazonaws.com/hanggi-rcr
+  newName: 434692986520.dkr.ecr.us-west-2.amazonaws.com/hanggi-ecr
+  newTag: v0.0.2
 
 resources:
 - ../../resources
