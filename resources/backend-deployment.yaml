@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rest-flask-backend-deployment
+  namespace: default
 spec:
   selector:
     matchLabels:
@@ -14,7 +15,7 @@ spec:
     spec:
       containers:
       - name: flask
-        image: 434692986520.dkr.ecr.us-west-2.amazonaws.com/hanggi-ecr:ac8f36e1598db01903bc833047f72b35bae91119
+        image: 434692986520.dkr.ecr.us-west-2.amazonaws.com/hanggi-ecr:v1.0.0
         env:
           - name: REDIS_HOST
             valueFrom:
@@ -24,3 +25,17 @@ spec:
         ports:
         - containerPort: 5000
           protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: rest-flask-backend-deployment
+  name: rest-flask-backend-service
+  namespace: default
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+  selector:
+    app: rest-flask-backend-deployment
