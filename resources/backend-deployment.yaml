@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: rest-flask-backend-app
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
